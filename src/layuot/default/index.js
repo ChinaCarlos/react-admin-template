@@ -1,0 +1,63 @@
+import React from 'react'
+import { Layout, Menu, Icon } from 'antd'
+const { Header, Sider, Content } = Layout
+
+export default PageComponent => {
+  return class DefaultLayout extends React.Component {
+    constructor(props) {
+      super()
+      this.props = props
+    }
+    state = {
+      collapsed: false
+    }
+
+    toggle = () => {
+      this.setState({
+        collapsed: !this.state.collapsed
+      })
+    }
+
+    render() {
+      return (
+        <Layout className="app-container" stlye={{ background: '#fff' }}>
+          <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+            <div className="logo" style={{ height: '64px' }} />
+            <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
+              <Menu.Item key="1">
+                <Icon type="user" />
+                <span>nav 1</span>
+              </Menu.Item>
+              <Menu.Item key="2">
+                <Icon type="video-camera" />
+                <span>nav 2</span>
+              </Menu.Item>
+              <Menu.Item key="3">
+                <Icon type="upload" />
+                <span>nav 3</span>
+              </Menu.Item>
+            </Menu>
+          </Sider>
+          <Layout>
+            <Header style={{ background: '#fff', padding: 0 }}>
+              <Icon
+                className="trigger"
+                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                onClick={this.toggle}
+              />
+            </Header>
+            <Content
+              style={{
+                margin: '24px 16px',
+                padding: 24,
+                background: '#fff'
+              }}
+            >
+              <PageComponent {...this.props} />
+            </Content>
+          </Layout>
+        </Layout>
+      )
+    }
+  }
+}
