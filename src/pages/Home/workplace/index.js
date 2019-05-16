@@ -1,5 +1,6 @@
 import React from 'react'
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 class Workplace extends React.Component {
   componentDidMount() {
     console.log(this.props)
@@ -9,4 +10,4 @@ class Workplace extends React.Component {
   }
 }
 
-export default withRouter(Workplace)
+export default withRouter(connect()(Workplace))

@@ -5,7 +5,8 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
-import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import DefaultLayout from '../../layuot/default/'
 // 引入该模块下的子页面
 import Analyse from './analyse/'
@@ -30,4 +31,4 @@ class Index extends React.Component {
     )
   }
 }
-export default withRouter(DefaultLayout(Index))
+export default withRouter(connect()(DefaultLayout(Index)))

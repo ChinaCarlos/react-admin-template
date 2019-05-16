@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Index from './pages/Home/'
 import About from './pages/About/'
 import Conact from './pages/Conact/'
@@ -13,6 +15,7 @@ import {
 } from 'react-router-dom'
 
 class App extends React.Component {
+  componentDidMount() {}
   render() {
     const isSignIn = false
     return (
@@ -35,5 +38,9 @@ class App extends React.Component {
     )
   }
 }
-
-export default App
+function mapStateToProps(state) {
+  return {
+    state
+  }
+}
+export default withRouter(connect(mapStateToProps)(App))
