@@ -23,7 +23,7 @@ class App extends React.Component {
   }
   async componentDidMount() {
     console.log(this.props)
-    await this.props.setUserName(2323)
+    await this.props.setUserName('admin-template')
     console.log(this.props)
   }
   render() {
