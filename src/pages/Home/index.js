@@ -11,7 +11,7 @@ import DefaultLayout from '../../layuot/default/'
 // 引入该模块下的子页面
 const Analyse = lazy(() => import('./analyse/'))
 const Workplace = lazy(() => import('./workplace/'))
-class Index extends React.Component {
+class Index extends Component {
   render() {
     return (
       <Suspense fallback={<div>loading</div>}>

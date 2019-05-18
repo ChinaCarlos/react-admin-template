@@ -20,7 +20,7 @@ export default PageComponent => {
 
     render() {
       return (
-        <Layout className="app-container" stlye={{ background: '#fff' }}>
+        <Layout className="app-container">
           <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
             <div className="logo" style={{ height: '64px' }} />
             <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
