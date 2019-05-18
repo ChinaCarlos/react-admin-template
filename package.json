@@ -154,6 +154,7 @@
     ]
   },
   "devDependencies": {
+    "prop-types": "^15.7.2",
     "react-scripts": "^3.0.1"
   },
   "husky": {
