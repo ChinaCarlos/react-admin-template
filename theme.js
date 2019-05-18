@@ -1,4 +1,4 @@
 module.exports = {
-  '@primary-color': '#FAAD14',
+  '@primary-color': '#415ff3',
   '@layout-header-background': '#fff'
 }

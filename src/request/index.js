@@ -1,4 +1,7 @@
+import React from 'react'
 import axios from 'axios'
+import { notification, Button } from 'antd'
+
 const AUTH_TOKEN = localStorage.getItem('token') || ''
 const instance = axios.create({
   headers: {
@@ -40,6 +43,16 @@ instance.interceptors.response.use(
       // 跳转到登录页
     } else if (response.status >= 500) {
       // 跳转到服务器出错页
+      notification.error({
+        message: `错误状态码:${response.status}`,
+        description: '系统检测接口调用异常，是否反馈该开发者进行修复！',
+        key: new Date().getTime().toString(),
+        btn: (
+          <Button type="error" size="small">
+            反馈
+          </Button>
+        )
+      })
     }
     return response
   },
