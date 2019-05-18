@@ -17,7 +17,7 @@ export default function userReducer(state = userState, action = {}) {
     case SET_USER_NAME:
       return {
         ...state,
-        userName: action.payload.name || ''
+        userName: action.payload
       }
     default:
       return state

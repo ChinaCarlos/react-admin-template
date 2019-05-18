@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
 import Index from './pages/Home/'
 import About from './pages/About/'
 import Conact from './pages/Conact/'
 import NoFound from './pages/NoFound/'
 import Login from './pages/Login/'
 import Register from './pages/Register/'
+import { getUserName, setUserName } from './store/user/action'
 import {
   BrowserRouter as Router,
   Route,
@@ -15,7 +17,11 @@ import {
 } from 'react-router-dom'
 
 class App extends React.Component {
-  componentDidMount() {}
+  async componentDidMount() {
+    console.log(this.props)
+    await this.props.setUserName('majian')
+    console.log(this.props)
+  }
   render() {
     const isSignIn = false
     return (
@@ -43,4 +49,14 @@ function mapStateToProps(state) {
     state
   }
 }
-export default withRouter(connect(mapStateToProps)(App))
+function mapDispatchToProps(dispatch) {
+  return {
+    ...bindActionCreators({ setUserName, getUserName }, dispatch)
+  }
+}
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+)
