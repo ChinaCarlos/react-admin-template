@@ -22,10 +22,11 @@ class App extends React.Component {
     userName: PropTypes.string
   }
   async componentDidMount() {
-    console.log(this.props)
-    await this.props.setUserName('admin-template')
-    console.log(this.props)
+    // console.log(this.props)
+    // await this.props.setUserName('admin-template')
+    // console.log(this.props)
   }
+
   render() {
     const isSignIn = false
     return (

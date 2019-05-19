@@ -2,6 +2,7 @@ import React from 'react'
 import { Layout, Icon, BackTop, Breadcrumb } from 'antd'
 import SiderMenu from '../../components/Sider/index'
 import { Link } from 'react-router-dom'
+
 const { Header, Content } = Layout
 export default PageComponent => {
   return class extends React.Component {
