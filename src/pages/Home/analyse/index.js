@@ -21,4 +21,4 @@ class Analyse extends React.Component {
   }
 }
 
-export default connect()(withRouter(Analyse))
+export default withRouter(connect()(Analyse))

@@ -1,9 +1,9 @@
 import React from 'react'
-import { Layout, Menu, Icon } from 'antd'
-const { Header, Sider, Content } = Layout
-
+import { Layout, Icon, BackTop } from 'antd'
+import SiderMenu from '../../components/Sider/index'
+const { Header, Content } = Layout
 export default PageComponent => {
-  return class DefaultLayout extends React.Component {
+  return class extends React.Component {
     constructor(props) {
       super()
       this.props = props
@@ -21,25 +21,15 @@ export default PageComponent => {
     render() {
       return (
         <Layout className="app-container">
-          <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-            <div className="logo" style={{ height: '64px' }} />
-            <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
-              <Menu.Item key="1">
-                <Icon type="user" />
-                <span>nav 1</span>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Icon type="video-camera" />
-                <span>nav 2</span>
-              </Menu.Item>
-              <Menu.Item key="3">
-                <Icon type="upload" />
-                <span>nav 3</span>
-              </Menu.Item>
-            </Menu>
-          </Sider>
+          <SiderMenu collapsed={this.state.collapsed} />
           <Layout>
-            <Header style={{ background: '#fff', padding: 0 }}>
+            <Header
+              style={{
+                background: '#fff',
+                zIndex: 1999,
+                paddingLeft: '10px'
+              }}
+            >
               <Icon
                 className="trigger"
                 type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
@@ -50,10 +40,14 @@ export default PageComponent => {
               style={{
                 margin: '24px 16px',
                 padding: 24,
-                background: '#fff'
+                background: '#fff',
+                paddingBottom: '10000px'
               }}
             >
               <PageComponent {...this.props} />
+              <BackTop>
+                <div className="ant-back-top-inner">UP</div>
+              </BackTop>
             </Content>
           </Layout>
         </Layout>
