@@ -3,14 +3,14 @@ const path = require('path')
 const express = require('express')
 const fs = require('fs')
 const app = express()
-app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, './build')))
 app.use(function(req, res) {
   fs.readFile(
-    path.join(__dirname, 'build/index.html'),
+    path.join(__dirname, './build/index.html'),
     'utf-8',
     (err, content) => {
       if (err) {
-        console.log('We Cannot open "bind/index.html" file.')
+        console.log('We Cannot open "buind/index.html" file.')
       }
       res.writeHead(200, {
         'Content-Type': 'text/html; charset=utf-8'
@@ -19,6 +19,6 @@ app.use(function(req, res) {
     }
   )
 })
-app.listen('6666', function() {
+app.listen('8080', function() {
   console.log('启动服务器完成')
 })
