@@ -35,6 +35,11 @@ code {
 }
 #nprogress > .spinner {
   z-index: 999999!important;
+  color:@primary-color;
+  .spinner-icon{
+    border-top-color: @primary-color!important;
+    border-left-color: @primary-color!important;
+  }
 }
 #nprogress > .bar {
   z-index: 999999;
@@ -42,4 +47,5 @@ code {
   position: fixed;
   top:0;
   left:0;
+  background: @primary-color;
 }

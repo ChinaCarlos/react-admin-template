@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import Nprogress from 'nprogress'
 
 const Button = styled.div`
   width: 180px;
@@ -12,6 +13,12 @@ const Button = styled.div`
   line-height: 40px;
 `
 class Analyse extends React.Component {
+  componentWillMount() {
+    Nprogress.start()
+  }
+  componentDidMount() {
+    Nprogress.done()
+  }
   render() {
     return (
       <div>

@@ -2,9 +2,14 @@ import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Button, Icon } from 'antd'
+import Nprogress from 'nprogress'
+
 class Workplace extends React.Component {
+  componentWillMount() {
+    Nprogress.start()
+  }
   componentDidMount() {
-    console.log(this.props)
+    Nprogress.done()
   }
   render() {
     return (
