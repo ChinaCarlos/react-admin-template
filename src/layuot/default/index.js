@@ -63,7 +63,9 @@ export default PageComponent => {
                 margin: '24px 16px',
                 padding: 24,
                 background: '#fff',
-                paddingBottom: '10000px'
+                height: '100%',
+                overflowY: 'auto',
+                overflowX: 'hidden'
               }}
             >
               <Breadcrumb>{breadcrumbItems}</Breadcrumb>
