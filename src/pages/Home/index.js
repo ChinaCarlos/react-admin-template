@@ -3,8 +3,8 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import DefaultLayout from '../../layuot/default/'
 // 引入该模块下的子页面
-const Analyse = lazy(() => import('./analyse/'))
-const Workplace = lazy(() => import('./workplace/'))
+const Analyse = lazy(() => import('../../views/analyse/'))
+const Workplace = lazy(() => import('../../views/workplace/'))
 class Index extends Component {
   render() {
     return (
