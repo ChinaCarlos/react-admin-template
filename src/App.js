@@ -9,9 +9,8 @@ import {
   Redirect
 } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import Index from './pages/Home/'
-import About from './pages/About/'
-import Conact from './pages/Conact/'
+import Dashboard from './pages/Dashboard'
+import Form from './pages/Form'
 import NoFound from './pages/NoFound/'
 import Login from './pages/Login/'
 import Register from './pages/Register/'
@@ -28,7 +27,7 @@ class App extends React.Component {
   }
 
   render() {
-    const isSignIn = false
+    const isSignIn = true
     return (
       <Router>
         <Switch>
@@ -36,13 +35,12 @@ class App extends React.Component {
             exact
             path="/"
             render={() => {
-              return isSignIn ? <Redirect to="/home" /> : <Login />
+              return isSignIn ? <Redirect to="/dashboard" /> : <Login />
             }}
           />
           <Route path="/register" component={Register} />
-          <Route path="/home" component={Index} />
-          <Route path="/about" component={About} />
-          <Route path="/conact" component={Conact} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/form" component={Form} />
           <Route component={NoFound} />
         </Switch>
       </Router>

@@ -22,9 +22,14 @@ export default PageComponent => {
 
     render() {
       const breadcrumbNameMap = {
-        '/home': '数据概览',
-        '/home/analyse': '数据分析',
-        '/home/workplace': '我的工作台'
+        '/dashboard': 'DashBoard',
+        '/dashboard/analyse': '分析页',
+        '/dashboard/workplace': '工作台',
+        '/dashboard/monitor': '监察页',
+        '/form': '表单页',
+        '/form/basic-form': '基础表单',
+        '/form/step-form': '分步表单',
+        '/form/advanced-form': '高级表单'
       }
       const { location } = this.props
       const pathSnippets = location.pathname.split('/').filter(i => i)
