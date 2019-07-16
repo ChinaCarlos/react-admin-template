@@ -27,8 +27,8 @@ class DefaultLayout extends Component {
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}
         >
-          <div className="logo">login</div>
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+          <div className="logo">logo</div>
+          <Menu theme="dark" defaultSelectedKeys={['1']} mode="vertical">
             <Menu.Item key="1">
               <Icon type="pie-chart" />
               <span>Option 1</span>
