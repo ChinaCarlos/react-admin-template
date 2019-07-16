@@ -1,33 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect,
+  withRouter
 } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import Dashboard from './pages/Dashboard'
-import Form from './pages/Form'
-import NoFound from './pages/NoFound/'
-import Login from './pages/Login/'
-import Register from './pages/Register/'
+import HomePage from './pages/home'
+import Login from './views/login/login'
+import NoFound from './views/no-found/index'
 import { getUserName, setUserName } from './store/user/action'
 
 class App extends React.Component {
   static propTypes = {
     userName: PropTypes.string
   }
-  async componentDidMount() {
-    // console.log(this.props)
-    // await this.props.setUserName('admin-template')
-    // console.log(this.props)
-  }
+  componentDidMount() {}
 
   render() {
-    const isSignIn = true
+    const isLogin = false
     return (
       <Router>
         <Switch>
@@ -35,12 +29,15 @@ class App extends React.Component {
             exact
             path="/"
             render={() => {
-              return isSignIn ? <Redirect to="/dashboard" /> : <Login />
+              return isLogin ? (
+                <Redirect to="/home" />
+              ) : (
+                <Redirect to="/login" />
+              )
             }}
           />
-          <Route path="/register" component={Register} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/form" component={Form} />
+          <Route path="/login" component={Login} />
+          <Route path="/home" component={HomePage} />
           <Route component={NoFound} />
         </Switch>
       </Router>
