@@ -9,7 +9,8 @@ import {
   withRouter
 } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import HomePage from './pages/home'
+import CommonPage from './pages/common'
+import NavigationPage from './pages/navigation'
 import Login from './views/login/login'
 import NoFound from './views/no-found/index'
 import { getUserName, setUserName } from './store/user/action'
@@ -30,14 +31,15 @@ class App extends React.Component {
             path="/"
             render={() => {
               return isLogin ? (
-                <Redirect to="/home" />
+                <Redirect to="/common" />
               ) : (
                 <Redirect to="/login" />
               )
             }}
           />
           <Route path="/login" component={Login} />
-          <Route path="/home" component={HomePage} />
+          <Route path="/common" component={CommonPage} />
+          <Route path="/navigation" component={NavigationPage} />
           <Route component={NoFound} />
         </Switch>
       </Router>

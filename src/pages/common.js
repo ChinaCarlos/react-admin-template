@@ -9,19 +9,19 @@ class HomePage extends Component {
     authList: PropTypes.array
   }
   render() {
-    const HomeView = lazy(() => import('../views/home/index'))
+    const CommonView = lazy(() => import('../views/home/index'))
     return (
       <DefaultLayout>
         <Suspense fallback={<div>loading</div>}>
           <Switch>
             <Route
               exact
-              path="/home"
+              path="/common"
               render={() => {
-                return <Redirect to="/home/index" />
+                return <Redirect to="/common/button" />
               }}
             />
-            <Route path="/home/index" component={HomeView} />
+            <Route path="/common/button" component={CommonView} />
           </Switch>
         </Suspense>
       </DefaultLayout>

@@ -2,165 +2,165 @@ export const menuList = [
   {
     key: 'common',
     title: '通用组件',
-    path: '/',
+    path: '/common',
     role: ['admin', 'public'],
     auth: 'PUBLIC',
-    icon: 'user',
+    icon: 'icon-caidan',
     children: [
       {
         key: 'common-button',
         title: '按钮',
-        path: '/',
+        path: '/common/button',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-anniu1'
       },
       {
         key: 'common-icon',
         title: '图标',
-        path: '/',
+        path: '/common/icon',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-yetouyingyongzhongxin'
       },
       {
         key: 'common-typography',
         title: '排版',
-        path: '/',
+        path: '/common/typography',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-paiban'
       },
       {
         key: 'common-grid',
         title: '栅格',
-        path: '/',
+        path: '/common/grid',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-zhage'
       },
       {
         key: 'common-layout',
         title: '布局',
-        path: '/',
+        path: '/common/layout',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-shujuzhanshi2'
       }
     ]
   },
   {
     key: 'navigation',
     title: '导航组件',
-    path: '/',
+    path: '/navigation',
     role: ['admin', 'public'],
     auth: 'PUBLIC',
-    icon: 'user',
+    icon: 'icon-chuanmao',
     children: [
       {
         key: 'navigation-affix',
         title: '固钉',
-        path: '/',
+        path: '/navigation/affix',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-guding'
       },
       {
         key: 'navigation-breadcrumb',
         title: '面包屑',
-        path: '/',
+        path: '/navigation/breadcrumb',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-buju'
       },
       {
         key: 'navigation-dropdown',
         title: '下拉菜单',
-        path: '/',
+        path: '/navigation/dropdown',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-xialacaidan'
       },
       {
         key: 'navigation-menu',
         title: '导航菜单',
-        path: '/',
+        path: '/navigation/menu',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-daohangcaidan'
       },
       {
         key: 'navigation-pagination',
         title: '分页',
-        path: '/',
+        path: '/navigation/pagination',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-fenye'
       },
       {
         key: 'navigation-page-header',
         title: '页头',
-        path: '/',
+        path: '/navigation/page-header',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-biaodan'
       },
       {
         key: 'navigation-steps',
         title: '步骤条',
-        path: '/',
+        path: '/navigation/steps',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-buzhoutiao'
       }
     ]
   },
   {
     key: 'data-entry',
     title: '数据录入',
-    path: '/',
+    path: '/data-entry',
     role: ['admin', 'public'],
     auth: 'PUBLIC',
-    icon: 'user',
+    icon: 'icon-biaodan',
     children: [
       {
         key: 'data-entry-base',
         title: '基础表单',
-        path: '/',
+        path: '/data-entry/base',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-c-'
       },
       {
         key: 'data-entry-pick',
         title: '选择器',
-        path: '/',
+        path: '/data-entry/pick',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-xuanzeqi'
       },
       {
         key: 'data-entry-advanced',
         title: '高级表单',
-        path: '/',
+        path: '/data-entry/advanced',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-shujuzhanshi2'
       }
     ]
   },
   {
     key: 'data-show',
     title: '数据展示',
-    path: '/',
+    path: '/data-show',
     role: ['admin', 'public'],
     auth: 'PUBLIC',
-    icon: 'user',
+    icon: 'icon-shujuzhanshi1',
     children: [
       {
         key: 'data-show-base',
         title: '基础展示',
-        path: '/',
+        path: '/data-show/base',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
         icon: 'user'
@@ -168,62 +168,62 @@ export const menuList = [
       {
         key: 'data-show-common',
         title: '通用展示',
-        path: '/',
+        path: '/data-show/common',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-shujuyeji'
       },
       {
         key: 'data-show-advanced',
         title: '高级展示',
-        path: '/',
+        path: '/data-show/advanced',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-shujuzhanshi'
       }
     ]
   },
   {
     key: 'feedback',
     title: '反馈组件',
-    path: '/',
+    path: '/feedback',
     role: ['admin', 'public'],
     auth: 'PUBLIC',
-    icon: 'user',
+    icon: 'icon-fankui4',
     children: [
       {
         key: 'feedback-base',
         title: '基础反馈',
-        path: '/',
+        path: '/feedback/base',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-fankui'
       },
       {
         key: 'feedback-common',
         title: '通用反馈',
-        path: '/',
+        path: '/feedback/common',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-fankui7'
       },
       {
         key: 'feedback-advanced',
         title: '高级反馈',
-        path: '/',
+        path: '/feedback/advanced',
         role: ['admin', 'public'],
         auth: 'PUBLIC',
-        icon: 'user'
+        icon: 'icon-fankui1'
       }
     ]
   },
   {
     key: 'source',
     title: '社区资源',
-    path: '/',
+    path: '/source',
     role: ['admin', 'public'],
     auth: 'PUBLIC',
-    icon: 'user',
+    icon: 'icon-shequ2',
     children: []
   }
 ]

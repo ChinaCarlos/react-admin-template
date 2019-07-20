@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
@@ -8,20 +8,40 @@ import { menuList } from '../../constants/menu'
 import { Layout, Menu, Breadcrumb, Icon, Avatar, Badge, Dropdown } from 'antd'
 const { Header, Content, Sider } = Layout
 const { SubMenu } = Menu
-// const IconFont = Icon.createFromIconfontCN({
-//   scriptUrl: '//at.alicdn.com/t/font_1306275_mur78vncge.js'
-// })
+let MENU_LIST = {}
+const IconFont = Icon.createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_1306275_77rjwjz5z1k.js'
+})
 
 class DefaultLayout extends Component {
   static propTypes = {
     menuList: PropTypes.array
   }
   state = {
-    collapsed: false
+    collapsed: false,
+    openKeys: [menuList[0].key],
+    selectedKeys: [menuList[0].children[0].key]
   }
-
+  onOpenChange = openKeys => {
+    const latestOpenKey = openKeys.find(
+      key => this.state.openKeys.indexOf(key) === -1
+    )
+    const rootSubmenuKeys = menuList.map(item => item.key)
+    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      this.setState({ openKeys })
+    } else {
+      this.setState({
+        openKeys: latestOpenKey ? [latestOpenKey] : []
+      })
+    }
+  }
   onCollapse = collapsed => {
     this.setState({ collapsed })
+  }
+  changeSelectKeys = keys => {
+    this.setState({
+      selectedKeys: [keys]
+    })
   }
   renderMenu(menuTreeData) {
     return menuTreeData.map(item => {
@@ -31,7 +51,7 @@ class DefaultLayout extends Component {
             key={item.key}
             title={
               <span>
-                <Icon type={item.icon} />
+                <IconFont type={item.icon} />
                 <span>{item.title}</span>
               </span>
             }
@@ -41,15 +61,62 @@ class DefaultLayout extends Component {
         )
       }
       return (
-        <Menu.Item key={item.key}>
-          <span>
-            <Icon type={item.icon} />
-            <span>{item.title}</span>
-          </span>
+        <Menu.Item
+          key={item.key}
+          onClick={this.changeSelectKeys.bind(this, item.key)}
+        >
+          <Link to={item.path}>
+            <span>
+              <IconFont type={item.icon} />
+              <span>{item.title}</span>
+            </span>
+          </Link>
         </Menu.Item>
       )
     })
   }
+  appBreadcrumb(menuList) {
+    for (let i = 0; i < menuList.length; i++) {
+      let item = menuList[i]
+      MENU_LIST = Object.assign({}, MENU_LIST, {
+        [item.path]: { title: item.title }
+      })
+      if (item.children && item.children.length > 0) {
+        for (let k = 0; k < item.children.length; k++) {
+          let child = item.children[k]
+          MENU_LIST = Object.assign({}, MENU_LIST, {
+            [child.path]: { title: child.title }
+          })
+        }
+      }
+    }
+    const { location } = this.props
+    const pathSnippets = location.pathname.split('/').filter(i => i)
+    const extraBreadcrumbItems = pathSnippets.map((_, index) => {
+      const url = `/${pathSnippets.slice(0, index + 1).join('/')}`
+      return <Breadcrumb.Item key={url}>{MENU_LIST[url].title}</Breadcrumb.Item>
+    })
+    const breadcrumbItems = [
+      <Breadcrumb.Item key="home">{'首页'}</Breadcrumb.Item>
+    ].concat(extraBreadcrumbItems)
+    return breadcrumbItems
+  }
+  changeMenu() {
+    const { location } = this.props
+    let pathname = location.pathname
+    let tempArr = pathname.split('/')
+    let openKeys = tempArr[1]
+    tempArr.splice(0, 1)
+    let keys = tempArr.join('-')
+    this.setState({
+      openKeys: [openKeys],
+      selectedKeys: [keys]
+    })
+  }
+  componentDidMount() {
+    this.changeMenu()
+  }
+
   render() {
     const userMenu = (
       <Menu className="user-menu-info">
@@ -83,8 +150,7 @@ class DefaultLayout extends Component {
       <Layout className="layout-container">
         <Sider
           width={180}
-          collapsible
-          theme="light"
+          theme="dark"
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse.bind(this)}
         >
@@ -101,7 +167,13 @@ class DefaultLayout extends Component {
               后台管理系统
             </div>
           </div>
-          <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
+          <Menu
+            theme="dark"
+            openKeys={this.state.openKeys}
+            selectedKeys={this.state.selectedKeys}
+            onOpenChange={this.onOpenChange.bind(this)}
+            mode="inline"
+          >
             {this.renderMenu(menuList)}
           </Menu>
         </Sider>
@@ -120,8 +192,7 @@ class DefaultLayout extends Component {
           </Header>
           <Content className="content-box">
             <Breadcrumb className="breadcrumb">
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+              {this.appBreadcrumb(menuList)}
             </Breadcrumb>
             <div className="page-view-container">{this.props.children}</div>
           </Content>
