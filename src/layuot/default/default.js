@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import './default.less'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd'
+import { Layout, Menu, Breadcrumb, Icon, Avatar, Badge, Dropdown } from 'antd'
 const { Header, Content, Sider } = Layout
 const { SubMenu } = Menu
+const IconFont = Icon.createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_1306275_mur78vncge.js'
+})
 class DefaultLayout extends Component {
   static propTypes = {
     menuList: PropTypes.array
@@ -20,6 +23,34 @@ class DefaultLayout extends Component {
     this.setState({ collapsed })
   }
   render() {
+    const menu = (
+      <Menu className="user-menu-info">
+        <Menu.Item>
+          <Link to={'/sign-out'}>
+            <Icon type="message" className="icon" />
+            <span className="title">我的消息</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to={'/user'}>
+            <Icon type="user" className="icon" />
+            <span className="title">个人中心</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to={'/modify-password'}>
+            <Icon type="edit" className="icon" />
+            <span className="title">修改密码</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to={'/sign-out'}>
+            <Icon type="logout" className="icon" />
+            <span className="title">退出登录</span>
+          </Link>
+        </Menu.Item>
+      </Menu>
+    )
     return (
       <Layout className="layout-container">
         <Sider
@@ -27,7 +58,18 @@ class DefaultLayout extends Component {
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}
         >
-          <div className="logo">logo</div>
+          <div className="logo">
+            <div className="logo-image">
+              <IconFont type="icon-yunjiankongCMS" />
+            </div>
+            <div
+              className={
+                this.state.collapsed ? 'logo-title none' : 'logo-title'
+              }
+            >
+              后台管理系统
+            </div>
+          </div>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="vertical">
             <Menu.Item key="1">
               <Icon type="pie-chart" />
@@ -69,7 +111,18 @@ class DefaultLayout extends Component {
           </Menu>
         </Sider>
         <Layout className="content-container">
-          <Header className="app-header" />
+          <Header className="app-header">
+            <div className="user-name">欢迎您，Carlos</div>
+            <Dropdown overlay={menu}>
+              <Badge count={1}>
+                <Avatar
+                  shape="circle"
+                  icon="user"
+                  src="http://img5.imgtn.bdimg.com/it/u=1600321308,1587951365&fm=26&gp=0.jpg"
+                />
+              </Badge>
+            </Dropdown>
+          </Header>
           <Content className="content-box">
             <Breadcrumb className="breadcrumb">
               <Breadcrumb.Item>User</Breadcrumb.Item>
