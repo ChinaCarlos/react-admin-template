@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import './default.less'
+import { menuList } from '../../constants/menu'
 import { Layout, Menu, Breadcrumb, Icon, Avatar, Badge, Dropdown } from 'antd'
 const { Header, Content, Sider } = Layout
 const { SubMenu } = Menu
-const IconFont = Icon.createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_1306275_mur78vncge.js'
-})
+// const IconFont = Icon.createFromIconfontCN({
+//   scriptUrl: '//at.alicdn.com/t/font_1306275_mur78vncge.js'
+// })
+
 class DefaultLayout extends Component {
   static propTypes = {
     menuList: PropTypes.array
@@ -19,11 +21,37 @@ class DefaultLayout extends Component {
   }
 
   onCollapse = collapsed => {
-    console.log(collapsed)
     this.setState({ collapsed })
   }
+  renderMenu(menuTreeData) {
+    return menuTreeData.map(item => {
+      if (item.children && item.children.length > 0) {
+        return (
+          <SubMenu
+            key={item.key}
+            title={
+              <span>
+                <Icon type={item.icon} />
+                <span>{item.title}</span>
+              </span>
+            }
+          >
+            {this.renderMenu(item.children)}
+          </SubMenu>
+        )
+      }
+      return (
+        <Menu.Item key={item.key}>
+          <span>
+            <Icon type={item.icon} />
+            <span>{item.title}</span>
+          </span>
+        </Menu.Item>
+      )
+    })
+  }
   render() {
-    const menu = (
+    const userMenu = (
       <Menu className="user-menu-info">
         <Menu.Item>
           <Link to={'/sign-out'}>
@@ -54,13 +82,16 @@ class DefaultLayout extends Component {
     return (
       <Layout className="layout-container">
         <Sider
+          width={180}
           collapsible
+          theme="light"
           collapsed={this.state.collapsed}
-          onCollapse={this.onCollapse}
+          onCollapse={this.onCollapse.bind(this)}
         >
           <div className="logo">
             <div className="logo-image">
-              <IconFont type="icon-yunjiankongCMS" />
+              {/*<IconFont type="icon-yunjiankongCMS" />*/}
+              React
             </div>
             <div
               className={
@@ -70,51 +101,15 @@ class DefaultLayout extends Component {
               后台管理系统
             </div>
           </div>
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="vertical">
-            <Menu.Item key="1">
-              <Icon type="pie-chart" />
-              <span>Option 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="desktop" />
-              <span>Option 2</span>
-            </Menu.Item>
-            <SubMenu
-              key="sub1"
-              title={
-                <span>
-                  <Icon type="user" />
-                  <span>User</span>
-                </span>
-              }
-            >
-              <Menu.Item key="3">Tom</Menu.Item>
-              <Menu.Item key="4">Bill</Menu.Item>
-              <Menu.Item key="5">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub2"
-              title={
-                <span>
-                  <Icon type="team" />
-                  <span>Team</span>
-                </span>
-              }
-            >
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9">
-              <Icon type="file" />
-              <span>File</span>
-            </Menu.Item>
+          <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
+            {this.renderMenu(menuList)}
           </Menu>
         </Sider>
         <Layout className="content-container">
           <Header className="app-header">
             <div className="user-name">欢迎您，Carlos</div>
-            <Dropdown overlay={menu}>
-              <Badge count={1}>
+            <Dropdown overlay={userMenu}>
+              <Badge count={99}>
                 <Avatar
                   shape="circle"
                   icon="user"
