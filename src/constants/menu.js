@@ -58,14 +58,6 @@ export const menuList = [
     icon: 'icon-chuanmao',
     children: [
       {
-        key: 'navigation-affix',
-        title: '固钉',
-        path: '/navigation/affix',
-        role: ['admin', 'public'],
-        auth: 'PUBLIC',
-        icon: 'icon-guding'
-      },
-      {
         key: 'navigation-breadcrumb',
         title: '面包屑',
         path: '/navigation/breadcrumb',

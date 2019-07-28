@@ -9,7 +9,13 @@ class HomePage extends Component {
     authList: PropTypes.array
   }
   render() {
-    const NavigationView = lazy(() => import('../views/common/button'))
+    const NavigationViewBreadcrumb = lazy(() =>
+      import('../views/navigation/breadcrumb')
+    )
+    const NavigationViewDropdown = lazy(() =>
+      import('../views/navigation/dropdown')
+    )
+    const NavigationViewMenu = lazy(() => import('../views/navigation/menu'))
     return (
       <DefaultLayout>
         <Suspense fallback={<div>loading</div>}>
@@ -18,10 +24,18 @@ class HomePage extends Component {
               exact
               path="/navigation"
               render={() => {
-                return <Redirect to="/navigation/affix" />
+                return <Redirect to="/navigation/breadcrumb" />
               }}
             />
-            <Route path="/navigation/affix" component={NavigationView} />
+            <Route
+              path="/navigation/breadcrumb"
+              component={NavigationViewBreadcrumb}
+            />
+            <Route
+              path="/navigation/dropdown"
+              component={NavigationViewDropdown}
+            />{' '}
+            <Route path="/navigation/menu" component={NavigationViewMenu} />
           </Switch>
         </Suspense>
       </DefaultLayout>
