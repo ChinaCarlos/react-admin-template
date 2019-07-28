@@ -20,7 +20,25 @@ class DefaultLayout extends Component {
   state = {
     collapsed: false,
     openKeys: [menuList[0].key],
+    saveOpenKeys: [],
     selectedKeys: [menuList[0].children[0].key]
+  }
+  toggle = () => {
+    console.log(this.state.collapsed)
+    if (!this.state.collapsed) {
+      // 关闭记住当前的选中和打开菜单
+      this.setState({
+        saveOpenKeys: this.state.openKeys,
+        openKeys: []
+      })
+    } else {
+      this.setState({
+        openKeys: this.state.saveOpenKeys
+      })
+    }
+    this.setState({
+      collapsed: !this.state.collapsed
+    })
   }
   onOpenChange = openKeys => {
     const latestOpenKey = openKeys.find(
@@ -179,16 +197,23 @@ class DefaultLayout extends Component {
         </Sider>
         <Layout className="content-container">
           <Header className="app-header">
-            <div className="user-name">欢迎您，Carlos</div>
-            <Dropdown overlay={userMenu}>
-              <Badge count={99}>
-                <Avatar
-                  shape="circle"
-                  icon="user"
-                  src="http://img5.imgtn.bdimg.com/it/u=1600321308,1587951365&fm=26&gp=0.jpg"
-                />
-              </Badge>
-            </Dropdown>
+            <Icon
+              className="trigger"
+              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              onClick={this.toggle}
+            />
+            <div className="right">
+              <div className="user-name">欢迎您，Carlos</div>
+              <Dropdown overlay={userMenu}>
+                <Badge count={99}>
+                  <Avatar
+                    shape="circle"
+                    icon="user"
+                    src="http://img5.imgtn.bdimg.com/it/u=1600321308,1587951365&fm=26&gp=0.jpg"
+                  />
+                </Badge>
+              </Dropdown>
+            </div>
           </Header>
           <Content className="content-box">
             <Breadcrumb className="breadcrumb">

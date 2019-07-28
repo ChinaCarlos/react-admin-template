@@ -9,7 +9,13 @@ class HomePage extends Component {
     authList: PropTypes.array
   }
   render() {
-    const CommonView = lazy(() => import('../views/home/index'))
+    const CommonViewButton = lazy(() => import('../views/common/button'))
+    const CommonViewIcon = lazy(() => import('../views/common/icon'))
+    const CommonViewTypography = lazy(() =>
+      import('../views/common/typography')
+    )
+    const CommonViewGrid = lazy(() => import('../views/common/grid'))
+    const CommonViewLayout = lazy(() => import('../views/common/layout'))
     return (
       <DefaultLayout>
         <Suspense fallback={<div>loading</div>}>
@@ -21,7 +27,11 @@ class HomePage extends Component {
                 return <Redirect to="/common/button" />
               }}
             />
-            <Route path="/common/button" component={CommonView} />
+            <Route path="/common/button" component={CommonViewButton} />
+            <Route path="/common/icon" component={CommonViewIcon} />
+            <Route path="/common/typography" component={CommonViewTypography} />
+            <Route path="/common/grid" component={CommonViewGrid} />
+            <Route path="/common/layout" component={CommonViewLayout} />
           </Switch>
         </Suspense>
       </DefaultLayout>

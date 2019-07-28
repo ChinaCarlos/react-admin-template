@@ -9,7 +9,7 @@ class HomePage extends Component {
     authList: PropTypes.array
   }
   render() {
-    const NavigationView = lazy(() => import('../views/home/index'))
+    const NavigationView = lazy(() => import('../views/common/button'))
     return (
       <DefaultLayout>
         <Suspense fallback={<div>loading</div>}>
