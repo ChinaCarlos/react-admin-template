@@ -45,42 +45,16 @@ export default class extends Component {
     )
     const menu = (
       <Menu>
-        <Menu.Item>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://www.alipay.com/"
-          >
-            1st menu item
-          </a>
-        </Menu.Item>
-        <Menu.Item>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://www.taobao.com/"
-          >
-            2nd menu item
-          </a>
-        </Menu.Item>
-        <Menu.Item>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://www.tmall.com/"
-          >
-            3rd menu item
-          </a>
-        </Menu.Item>
+        <Menu.Item>1st menu item</Menu.Item>
+        <Menu.Item>2nd menu item</Menu.Item>
+        <Menu.Item>3rd menu item</Menu.Item>
       </Menu>
     )
     return (
       <Row className="page-views">
         <Col span={24} className="info-item-container">
           <Dropdown overlay={menu}>
-            <a className="ant-dropdown-link" href="#">
-              Hover me <Icon type="down" />
-            </a>
+            Hover me <Icon type="down" />
           </Dropdown>
           <br />
           <div>
@@ -106,9 +80,7 @@ export default class extends Component {
           </div>
           <br />
           <Dropdown overlay={subMenu}>
-            <a className="ant-dropdown-link" href="#">
-              Cascading menu <Icon type="down" />
-            </a>
+            Cascading menu <Icon type="down" />
           </Dropdown>
           <Dropdown overlay={menu} trigger={['contextMenu']}>
             <span style={{ userSelect: 'none', marginLeft: '20px' }}>
@@ -145,7 +117,6 @@ export default class extends Component {
               </Button>
             </Dropdown>
           </div>
-          ,
         </Col>
       </Row>
     )

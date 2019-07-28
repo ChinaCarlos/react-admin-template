@@ -16,6 +16,10 @@ class HomePage extends Component {
       import('../views/navigation/dropdown')
     )
     const NavigationViewMenu = lazy(() => import('../views/navigation/menu'))
+    const NavigationViewPagination = lazy(() =>
+      import('../views/navigation/pagination')
+    )
+    const NavigationViewSteps = lazy(() => import('../views/navigation/steps'))
     return (
       <DefaultLayout>
         <Suspense fallback={<div>loading</div>}>
@@ -34,8 +38,13 @@ class HomePage extends Component {
             <Route
               path="/navigation/dropdown"
               component={NavigationViewDropdown}
-            />{' '}
+            />
             <Route path="/navigation/menu" component={NavigationViewMenu} />
+            <Route
+              path="/navigation/pagination"
+              component={NavigationViewPagination}
+            />
+            <Route path="/navigation/steps" component={NavigationViewSteps} />
           </Switch>
         </Suspense>
       </DefaultLayout>

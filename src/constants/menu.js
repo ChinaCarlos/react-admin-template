@@ -90,14 +90,6 @@ export const menuList = [
         icon: 'icon-fenye'
       },
       {
-        key: 'navigation-page-header',
-        title: '页头',
-        path: '/navigation/page-header',
-        role: ['admin', 'public'],
-        auth: 'PUBLIC',
-        icon: 'icon-biaodan'
-      },
-      {
         key: 'navigation-steps',
         title: '步骤条',
         path: '/navigation/steps',
