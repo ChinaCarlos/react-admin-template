@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Row, Col, Menu, Dropdown, Icon, Button, message } from 'antd'
 import './navigation.less'
 const { SubMenu } = Menu
+
 function handleButtonClick(e) {
   message.info('Click on left button.')
   console.log('click left button', e)
@@ -54,7 +55,9 @@ export default class extends Component {
       <Row className="page-views">
         <Col span={24} className="info-item-container">
           <Dropdown overlay={menu}>
-            Hover me <Icon type="down" />
+            <span>
+              Hover me <Icon type="down" />
+            </span>
           </Dropdown>
           <br />
           <div>
@@ -80,7 +83,9 @@ export default class extends Component {
           </div>
           <br />
           <Dropdown overlay={subMenu}>
-            Cascading menu <Icon type="down" />
+            <span>
+              Cascading menu <Icon type="down" />
+            </span>
           </Dropdown>
           <Dropdown overlay={menu} trigger={['contextMenu']}>
             <span style={{ userSelect: 'none', marginLeft: '20px' }}>
@@ -113,7 +118,9 @@ export default class extends Component {
             </Dropdown.Button>
             <Dropdown overlay={buttonMenu}>
               <Button className={'margin-item'}>
-                Button <Icon type="down" />
+                <span>
+                  Button <Icon type="down" />
+                </span>
               </Button>
             </Dropdown>
           </div>
