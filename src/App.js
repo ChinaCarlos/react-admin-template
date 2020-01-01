@@ -56,9 +56,4 @@ function mapDispatchToProps(dispatch) {
     ...bindActionCreators({ setUserName, getUserName }, dispatch)
   }
 }
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

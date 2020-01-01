@@ -6,7 +6,7 @@
 
 > 2.效果如下图所示：
 
-> ![项目效果截图](https://s2.ax1x.com/2020/01/01/lGDBkt.png)
+> ![项目效果截图](https://github.com/maliaoMJ/react-admin-template/blob/master/demos/11.png)
 
 ### 2.项目运行
 
@@ -96,7 +96,7 @@ module.exports = {
 ```
 
 然后打开 ``查看打包模块分析，如下图所示：
-![项目效果截图](https://s2.ax1x.com/2020/01/01/lG53b6.png)
+![项目效果截图](https://github.com/maliaoMJ/react-admin-template/blob/master/demos/22.png)
 
 ##### 5.开发联调环境中 API Proxy 代理
 
