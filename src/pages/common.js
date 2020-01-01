@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect, withRouter, Route, Switch } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
-import DefaultLayout from '../layuot/default/default'
+import DefaultLayout from '../layout/default/default'
 class HomePage extends Component {
   static propTypes = {
     authList: PropTypes.array
@@ -52,8 +52,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(HomePage)
+  connect(mapStateToProps, mapDispatchToProps)(HomePage)
 )

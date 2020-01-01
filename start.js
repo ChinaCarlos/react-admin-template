@@ -20,5 +20,5 @@ app.use(function(req, res) {
   )
 })
 app.listen('8080', function() {
-  console.log('启动服务器完成')
+  console.log('web启动服务器完成')
 })

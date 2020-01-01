@@ -239,8 +239,5 @@ function mapDispatchToProps(dispatch) {
   }
 }
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(DefaultLayout)
+  connect(mapStateToProps, mapDispatchToProps)(DefaultLayout)
 )
