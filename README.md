@@ -1,7 +1,6 @@
 ## 基于 React(SPA) + AntdDesign 的一个后台管理系统模板
 
 ### 1.项目简介
-
 > 1.该项目集成了`React`,`Redux`,`React-Router-Dom`,`React-Redux`,`Redux-Thunk`,`Antd-Design`,`Prettier`,`Style-Components`,`Axios`等技术。
 
 > 2.效果如下图所示：
@@ -9,6 +8,7 @@
 > ![项目效果截图](https://github.com/maliaoMJ/react-admin-template/blob/master/demos/11.png)
 
 ### 2.项目运行
+##### 也可以通过`carlos-react-cli`脚手架安装
 
 1. 首先克隆本项目到本地
 
